@@ -7,20 +7,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	#viewcontent{
+		height:700px;
+	}
+</style>
 </head>
 <body>
-	#${param.no }<br>
-	등록시간: ${vo.getRegDate()}<br><br><br> 제목:
-	${vo.getTitle()}<br>
-	<br> 내용:
-	${vo.getContent()}<br>
-	<br>
-	<br>
-	<form>
-		<input type="button" onclick="window.location.href='#this'" value="수정">
-		<input type="button" onclick="window.location.href='#this'" value="삭제">
-		<input type="button" onclick="window.location.href='template.jsp?page=BoardList&btype='"
-			value="목록으로">
-	</form>
+	<div id="viewcontent">
+		<br>
+		#${param.no }<br>
+		등록시간: ${vo.getRegDate()}<br><br><br> 제목:
+		${vo.getTitle()}<br>
+		<br> 내용:
+		${vo.getContent()}<br>
+		<br>
+		<br>
+		<form>
+			<input type="button" onclick="window.location.href='boardReg.bo?btype=${param.btype}&pg=${param.pg }&no=${param.no}'" value="수정">
+			<input type="button" onclick="window.location.href='boardDel.bo?btype=${param.btype}&pg=${param.pg }&no=${param.no}'" value="삭제">
+			<input type="button" onclick="history.back()"	value="목록으로">
+		</form>
+		<br>
+	</div>
 </body>
 </html>

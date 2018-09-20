@@ -5,8 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#hm{
+		height:800px;
+		display:flex;
+		align-items:center;
+		width:100%;
+		background:url('img/pinktaric.jpg') no-repeat center;
+    	background-size: 100% 100%;
+	}
+</style>
 </head>
 <body>
-	<div>홈홈홈</div>
+	<div id="hm">
+	</div>
 </body>
 </html>

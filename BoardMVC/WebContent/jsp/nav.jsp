@@ -6,18 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	a{	
+	
+	.nav{
+   		 position: relative;
+   		 display: inline-block;
+   		 cursor: pointer;
+	}	
+	.dropdown-content a{	
 		text-align:center;
 		padding:10px;
 		display:block;
 		text-decoration:none;
 		color:white;
-		border-bottom: 1px solid white;
-	}
-	.nav{
-   		 position: relative;
-   		 display: inline-block;
-   		 cursor: pointer;
+		border-bottom:1px solid white;
 	}
 	.dropdown-content{
 		display:none;
@@ -47,9 +48,9 @@
 	<div class="nav">
 		<div class="board">게시판</div>
 		<div class="dropdown-content">
-			<a href="boardList.bo?btype=1">공지</a> 
-			<a href="boardList.bo?btype=2">자유</a> 
-			<a href="boardList.bo?btype=3">유우머</a>
+			<a href="boardList.bo?btype=1&pg=1">공지</a> 
+			<a href="boardList.bo?btype=2&pg=1">자유</a> 
+			<a href="boardList.bo?btype=3&pg=1">유우머</a>
 		</div>		
 	</div>
 	<div class="nav">

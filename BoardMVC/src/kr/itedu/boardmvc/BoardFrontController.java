@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.itedu.boardmvc.action.Action;
+import kr.itedu.boardmvc.action.BoardDeleteAction;
 import kr.itedu.boardmvc.action.BoardDetailAction;
 import kr.itedu.boardmvc.action.BoardListAction;
 import kr.itedu.boardmvc.action.BoardRegAction;
 import kr.itedu.boardmvc.action.HomeAction;
-import kr.itedu.boardmvc.common.Utils;
 
 @WebServlet("*.bo")
 public class BoardFrontController extends HttpServlet {
@@ -61,6 +61,17 @@ public class BoardFrontController extends HttpServlet {
 		} else if (command.equals("/boardReg.bo")) {
 
 			action = new BoardRegAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO:예외처리
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/boardDel.bo")) {
+
+			action = new BoardDeleteAction();
 			
 			try {
 				forward = action.execute(request, response);

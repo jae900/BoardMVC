@@ -20,12 +20,20 @@ public class BoardListAction implements Action {
 		
 		Service service = new Service();
 		int btype = Utils.getParamInt(request.getParameter("btype"));
-		ArrayList<BoardVO> data = service.getBoardList(btype);
+		int pagecount = 15;
+		int pagenum = service.getPage(btype, pagecount);
+		int pg = Utils.getParamInt(request.getParameter("pg"));
+		System.out.println(pagenum);
+		
+		
+		ArrayList<BoardVO> data = service.getBoardPage(btype, pg, pagecount);
 		request.setAttribute("title", Var.TITLES[btype-1]);
 		request.setAttribute("page", "boardlist");
 		request.setAttribute("content", "boardList");
 		request.setAttribute("btype", btype);
 		request.setAttribute("data", data);
+		request.setAttribute("pagenum", pagenum);
+		request.setAttribute("pg", pg);
 		
 		return forward;
 	}

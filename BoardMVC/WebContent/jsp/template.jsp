@@ -30,7 +30,7 @@
 	}
 	.head{
 		text-decoration:none;
-		background-color:gray;
+		background-color:#F897CB;
 		width:100%;
 		flex:0 0 150px;
 		text-align:center;
@@ -39,13 +39,12 @@
 	
 	.navi{
 		color:white;
-		background-color:black;
+		background-color:#767272;
 		width:100%;
 		flex:0 0 50px;
 	}
 	.con{
-		height:700px;
-		background-color:lightgray;
+		background-color:#F897CB;
 		width:100%;
 		display:flex;
 		flex-direction:column;

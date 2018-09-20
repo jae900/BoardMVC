@@ -49,15 +49,16 @@
 
 <body>
 	<h1>글쓰기</h1>
-	<form action="boardReg.bo?btype=${param.btype}" method="post">
-		<div>제목<br><input type="text" name="title"></div><br>
-		<div class="content">내용<textarea name="content"></textarea></div><br>
+	<form action="boardReg.bo?btype=${param.btype}&pg=${param.pg}" method="post">
+		<div>제목<br><input type="text" name="title" value="<c:if test="${param.no != 0}">${vo.getTitle() }</c:if>"></div><br>
+		<div class="content">내용<textarea name="content"><c:if test="${param.no != 0}">${vo.getContent() }</c:if></textarea></div><br>
 		<div class="buttonlist">
 			<input type="submit" value="확인" class="button">
 			<input type="reset"	value="취소" class="button">
-			<input type="hidden" name="flag" value="1">
-			<input type="hidden" name="no" value="0">
+			<input type="hidden" name="flag" value="0">
+			<input type="hidden" name="no" value="${param.no}">
 		</div>
 	</form>
+	<br><br>
 </body>
 </html>
