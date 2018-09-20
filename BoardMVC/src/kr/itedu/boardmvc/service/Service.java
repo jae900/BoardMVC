@@ -15,7 +15,7 @@ public class Service {
 
 		System.out.println(result.get(1).getTitle());
 		return result;
-	}
+	} 
 
 	public BoardVO getBoardDetail(int btype, int num) {
 		BoardVO vo = null;
