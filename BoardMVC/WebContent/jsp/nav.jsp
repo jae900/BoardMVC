@@ -23,15 +23,15 @@
 	.dropdown-content{
 		display:none;
 		position: absolute;
-		width:130px;
+		width:100px;
 	}
 	.board{
 		display:flex;
 		align-items:center;
 		justify-content:center;
 		font-size:20px;
-		height:50px;
-		width:130px;
+		width:100px;
+		padding-bottom:5px;
 	}
 	.nav:hover .board{
 		background-color:#2E2E2E;
@@ -50,7 +50,7 @@
 		<div class="dropdown-content">
 			<a href="boardList.bo?btype=1&pg=1">공지</a> 
 			<a href="boardList.bo?btype=2&pg=1">자유</a> 
-			<a href="boardList.bo?btype=3&pg=1">유우머</a>
+			<a href="boardList.bo?btype=3&pg=1">유우모</a>
 		</div>		
 	</div>
 	<div class="nav">

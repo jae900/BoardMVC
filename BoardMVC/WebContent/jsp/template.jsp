@@ -33,15 +33,16 @@
 		background-color:#F897CB;
 		width:100%;
 		flex:0 0 150px;
-		text-align:center;
-		vertical-align:middle;
+		display:flex;
+		justify-content:center;
+		align-items:center;
 	}
 	
 	.navi{
 		color:white;
 		background-color:#767272;
 		width:100%;
-		flex:0 0 50px;
+		flex:0 0;
 	}
 	.con{
 		background-color:#F897CB;
