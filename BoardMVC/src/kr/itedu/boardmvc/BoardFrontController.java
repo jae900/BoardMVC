@@ -14,6 +14,8 @@ import kr.itedu.boardmvc.action.BoardDeleteAction;
 import kr.itedu.boardmvc.action.BoardDetailAction;
 import kr.itedu.boardmvc.action.BoardListAction;
 import kr.itedu.boardmvc.action.BoardRegAction;
+import kr.itedu.boardmvc.action.CommentDeleteAction;
+import kr.itedu.boardmvc.action.CommentRegAction;
 import kr.itedu.boardmvc.action.HomeAction;
 
 @WebServlet("*.bo")
@@ -24,8 +26,7 @@ public class BoardFrontController extends HttpServlet {
 		super();
 	}
 
-	protected void doProc(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doProc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String reqURI = request.getRequestURI();
 		String ctxPath = request.getContextPath();
@@ -80,7 +81,29 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}
+		} else if (command.equals("/commentReg.bo")) {
+
+			action = new CommentRegAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO:예외처리
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/commentDelete.bo")) {
+
+			action = new CommentDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO:예외처리
+				e.printStackTrace();
+			}
+
+		} 
 
 		if (forward != null) {
 			if (forward.isRedirect()) {

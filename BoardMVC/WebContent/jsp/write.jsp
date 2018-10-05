@@ -33,8 +33,6 @@
 		display:flex;
 	}
 	textarea{
-		display:flex;
-		align-items:flex-start;
 		width: 550px;
 		height:400px;
 	}
@@ -50,8 +48,8 @@
 <body>
 	<h1>글쓰기</h1>
 	<form action="boardReg.bo?btype=${param.btype}&pg=${param.pg}" method="post">
-		<div>제목<br><input type="text" name="title" value="<c:if test="${param.no != 0}">${vo.getTitle() }</c:if>"></div><br>
-		<div class="content">내용<textarea name="content"><c:if test="${param.no != 0}">${vo.getContent() }</c:if></textarea></div><br>
+		<div>제목<br><input type="text" name="title" value="<c:if test="${param.no != 0}">${vo.getTitle() }</c:if>" required ></div><br>
+		<div>내용<br><pre><textarea name="content" required><c:if test="${param.no != 0}">${vo.getContent()}</c:if></textarea></pre></div><br>
 		<div class="buttonlist">
 			<input type="submit" value="확인" class="button">
 			<input type="reset"	value="취소" class="button">

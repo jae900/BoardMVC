@@ -6,14 +6,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
- #headera{
-		color:black;
-		font-size:50px;
-		text-decoration:none;
+	#headtitle{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	}
+	
+	img{
+		height:130px;
 	}
 </style>
 </head>
 <body>
-	<h1><a href="home.bo" id="headera">핑크타릭</a></h1>
+	<div id="headtitle">
+		<a href="home.bo"><img src="img/maintitle.png"></a>
+	</div>
 </body>
 </html>

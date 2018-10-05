@@ -9,18 +9,35 @@
 <title>Insert title here</title>
 <style>
 	#viewcontent{
-		height:700px;
+		min-height:700px;
+	}
+	.title{
+		font-size:22px;
+		font-weight:bold;
+	}
+	.regtime{
+		font-size:15px;
+	}
+	textarea{
+		width: 400px;
+		height:60px;
+	}
+	#regDate{
+		font-size:13px;
+	}
+	#commentReg{
+		font-size:13px;
+		padding-bottom:5px;
 	}
 </style>
 </head>
 <body>
 	<div id="viewcontent">
 		<br>
-		#${param.no }<br>
-		등록시간: ${vo.getRegDate()}<br><br><br> 제목:
-		${vo.getTitle()}<br>
-		<br> 내용:
-		${vo.getContent()}<br>
+		#${param.no }번 글<br><br>
+		<div class="title">${vo.getTitle()}</div>
+		<div class="regtime">${vo.getRegDate()}</div><hr><br>
+		<pre>${vo.getContent()}</pre><br>
 		<br>
 		<br>
 		<form>
@@ -28,7 +45,29 @@
 			<input type="button" onclick="window.location.href='boardDel.bo?btype=${param.btype}&pg=${param.pg }&no=${param.no}'" value="삭제">
 			<input type="button" onclick="history.back()"	value="목록으로">
 		</form>
-		<br>
+		<br><hr><br>
+		<u>${commentCnt} comments</u><br><br>
+			
+			<c:forEach items = "${cdata}" var = "c">
+				<table>
+					<tr>
+						<td id="regDate">${c.getCregdate()} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href=>삭제</a></td>					
+					</tr>
+					<tr>
+						<td id="title">${c.getT_comment()}</td>
+					</tr>
+				</table>
+				<br>
+			</c:forEach>
+			<br><br>
+		<div id="commentReg">댓글등록</div>
+		<form action="commentReg.bo?btype=${param.btype}&pg=${param.pg}&no=${param.no}" method="post">
+			<textarea name="t_comment"></textarea>
+			<input type="submit" value="등록">
+		</form>
 	</div>
+	<br>
+	<br>
+	
 </body>
 </html>

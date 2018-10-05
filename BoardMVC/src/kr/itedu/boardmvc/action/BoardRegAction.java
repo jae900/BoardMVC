@@ -46,8 +46,8 @@ public class BoardRegAction implements Action {
 				String title = request.getParameter("title");
 				String content = request.getParameter("content");
 				service.update(btype, no, title, content);
-				request.setAttribute("page", "boardlist");
-				forward.setPath("boardList.bo?btype="+btype+"&pg="+pg);
+				request.setAttribute("page", "viewcontent");
+				forward.setPath("boardDetail.bo?btype="+btype+"&pg="+pg+"&no="+no);
 			}
 		}
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.itedu.boardmvc.ActionForward;
 import kr.itedu.boardmvc.BoardVO;
+import kr.itedu.boardmvc.CommentVO;
 import kr.itedu.boardmvc.common.Utils;
 import kr.itedu.boardmvc.common.Var;
 import kr.itedu.boardmvc.service.Service;
@@ -23,6 +24,7 @@ public class BoardListAction implements Action {
 		int pagecount = 15;
 		int pagenum = service.getPage(btype, pagecount);
 		int pg = Utils.getParamInt(request.getParameter("pg"));
+		int num = Utils.getParamInt(request.getParameter("no"));
 		System.out.println(pagenum);
 		
 		
@@ -34,6 +36,11 @@ public class BoardListAction implements Action {
 		request.setAttribute("data", data);
 		request.setAttribute("pagenum", pagenum);
 		request.setAttribute("pg", pg);
+		
+		ArrayList<CommentVO> cdata= service.getComment(btype, num);
+		request.setAttribute("cdata", cdata);
+		int commentCnt = cdata.size();
+		request.setAttribute("commentCnt", commentCnt);
 		
 		return forward;
 	}

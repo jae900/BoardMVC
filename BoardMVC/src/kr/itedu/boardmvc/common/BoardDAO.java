@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.itedu.boardmvc.BoardVO;
+import kr.itedu.boardmvc.CommentVO;
 
 public class BoardDAO {
 	private static BoardDAO dao;
@@ -233,13 +234,112 @@ public class BoardDAO {
 	public void delete(int btype, int no){
 		Connection conn = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 						
 		String query = " delete from board"+btype+" where no="+no ;
 		
 		try {
 			conn = getConn();
 			ps=conn.prepareStatement(query);
+			
+			ps.execute();
+			
+			System.out.println("삭제완료");
+			
+		} catch(SQLException e) {
+			//TODO : 예외처리
+		} catch (Exception e) {
+			//TODO : 예외처리
+		} finally {
+			close(conn, ps);
+		}		
+	}
+	
+	public void insertComment(int btype, int no, String t_comment){
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+						
+		String query = " insert into t_comment (cid, btype, no, t_comment) values "
+				+ " ((select nvl(max(cid),0)+1 from t_comment), ?, ?, ? ) " ;
+		
+		try {
+			conn = getConn();
+			ps=conn.prepareStatement(query);
+			ps.setInt(1, btype);
+			ps.setInt(2, no);
+			ps.setString(3, t_comment);
+			
+			ps.executeQuery();
+			
+			System.out.println("삽입완료");
+			
+		} catch(SQLException e) {
+			//TODO : 예외처리
+		} catch (Exception e) {
+			//TODO : 예외처리
+		} finally {
+			close(conn, ps, rs);
+		}		
+	}
+	
+	public ArrayList<CommentVO> getComment(int btype, int no){
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		ArrayList<CommentVO> result = new ArrayList<CommentVO>();
+		
+		String query = " Select * from t_comment where btype=? and no=?"
+				+ " order by cid ";
+		
+		try {
+			conn = getConn();
+			ps=conn.prepareStatement(query);
+			ps.setInt(1, btype);
+			ps.setInt(2, no);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				CommentVO cvo = new CommentVO();
+				
+				int cid = rs.getInt("cid");
+				int num = rs.getInt("no");
+				int btyp = rs.getInt("btype");
+				String t_comment = rs.getString("t_comment");
+				String cregdate=rs.getString("cregdate");
+				
+				cvo.setCid(cid);
+				cvo.setNo(num);
+				cvo.setBtype(btyp);
+				cvo.setT_comment(t_comment);
+				cvo.setCregdate(cregdate);
+				
+				result.add(cvo);
+			}
+			
+		} catch(SQLException e) {
+			//TODO : 예외처리
+		} catch (Exception e) {
+			//TODO : 예외처리
+		} finally {
+			close(conn, ps, rs);
+		}		
+		
+		return result;
+	}
+	
+	public void deleteComment(int btype, int no) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+						
+		String query = " delete from t_comment where btype=?, no=? ";
+		
+		try {
+			conn = getConn();
+			ps=conn.prepareStatement(query);
+			ps.setInt(1, btype);
+			ps.setInt(2, no);
 			
 			ps.executeQuery();
 			
@@ -250,7 +350,8 @@ public class BoardDAO {
 		} catch (Exception e) {
 			//TODO : 예외처리
 		} finally {
-			close(conn, ps, rs);
+			close(conn, ps);
 		}		
 	}
+		
 }

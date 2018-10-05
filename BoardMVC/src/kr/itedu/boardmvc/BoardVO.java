@@ -2,8 +2,9 @@ package kr.itedu.boardmvc;
 
 public class BoardVO {
 	
-	public int no, btype;
+	int no, btype;
 	String title, content, regDate;
+	
 	public int getNo() {
 		return no;
 	}

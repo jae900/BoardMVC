@@ -11,8 +11,8 @@
 		display:flex;
 		align-items:center;
 		width:100%;
-		background:url('img/pinktaric.jpg') no-repeat center;
-    	background-size: 100% 100%;
+		background:url('img/mainpic.gif') no-repeat center;
+    	background-size: 60% 60%;
 	}
 </style>
 </head>

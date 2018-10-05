@@ -3,6 +3,7 @@ package kr.itedu.boardmvc.service;
 import java.util.ArrayList;
 
 import kr.itedu.boardmvc.BoardVO;
+import kr.itedu.boardmvc.CommentVO;
 import kr.itedu.boardmvc.common.BoardDAO;
 
 public class Service {
@@ -45,8 +46,6 @@ public class Service {
 		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
 		result = dao.getBoardPage(btype, pg, pagecount);
 		
-		System.out.println(result.get(0).getRegDate());
-		
 		return result;
 	}
 	
@@ -59,8 +58,21 @@ public class Service {
 	public void delete (int btype, int no) {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.delete(btype, no);
-		System.out.println("?????");
 		
 	}	
-
+	
+	public void insertComment(int btype, int no, String t_comment) {
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.insertComment(btype, no, t_comment);		
+	}
+	
+	public ArrayList<CommentVO> getComment(int btype, int no) {
+		BoardDAO dao = BoardDAO.getInstance();
+		
+		return dao.getComment(btype, no); 
+	}
+	
+	public void deleteComment() {
+		
+	}
 }
